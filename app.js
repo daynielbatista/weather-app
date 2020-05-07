@@ -7,8 +7,10 @@ window.addEventListener('load', ()=> {
             long = position.coords.longitude;
             lat = position.coords.latitude;
 
+            const api =`https://fcc-weather-api.glitch.me/api/current?lat=35&lon=139`;
 
-            /*fetch("https://weather2020-weather-v1.p.rapidapi.com/e8ecee8ff60c478f8a36280fea0524fe/39.0997,94.5783", {
+
+            fetch("https://fcc-weather-api.glitch.me/api/current?lat=35&lon=139", {
                 "method": "GET",
                 "headers": {
                     "x-rapidapi-host": "weather2020-weather-v1.p.rapidapi.com",
@@ -20,7 +22,7 @@ window.addEventListener('load', ()=> {
             })
             .catch(err => {
                 console.log(err);
-            });*/
+            });
 
             
 
