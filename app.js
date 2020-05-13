@@ -17,7 +17,10 @@ window.addEventListener('load', ()=> {
             })
             .then(data => {
                 console.log('data: ', data);
-                
+                connst { temperature, summary} = data.currently;
+                //Set DOM Elements from the API
+                temperatureDegree.textContent = temperature;
+                temperatureDescription.textContent = summary;
             })
             .catch(err => {
                 console.log(err);
@@ -30,4 +33,6 @@ window.addEventListener('load', ()=> {
     } else {
         h1.textContent = "Please allow the app to access your location to show the weather in your area."
     }
+
+ 
 });
