@@ -3,7 +3,9 @@ window.addEventListener('load', ()=> {
     let lat;
     let temperatureDescription = document.querySelector(".temperature-description");
     let temperatureDegree = document.querySelector(".temperature-degree");
+    let temperatureSection = document.querySelector("temperature-section");
     let locationTimezone = document.querySelector(".location-timezone");
+    const temperatureSpan = document.querySelector("temperature-section span");
 
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(position => {
@@ -37,8 +39,13 @@ window.addEventListener('load', ()=> {
                 locationTimezone.textContent = data.name;
                 //Set Icon
                 setIcons(icon, document.querySelector(".icon"));
+                //Change temp tp Celcius/Farenheit
+                temperatureSection.addEventListener('click', () =>{
+                    
+                });
 
-            })
+
+            });
             .catch(err => {
                 console.log(err);
             });    
@@ -54,6 +61,5 @@ window.addEventListener('load', ()=> {
         skycons.play();
         return skycons.set(iconID, Skycons[currentIcon]);
     }
-
  
 });
