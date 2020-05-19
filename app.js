@@ -9,7 +9,6 @@ window.addEventListener('load', ()=> {
 
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(position => {
-            //console.log('position: ',position);
             long = position.coords.longitude;
             lat = position.coords.latitude;
             
@@ -18,7 +17,7 @@ window.addEventListener('load', ()=> {
             const api = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=054374e7495d292bbd59351f7e77bffe`;
             
                         
-            fetch(api, { "method": "GET" })            
+            fetch(api)//, { "method": "GET" })            
             //console.log('verificando: ', fetch(api, { "method": "GET" }));
             .then(response => {
                 return response.json();
@@ -38,7 +37,7 @@ window.addEventListener('load', ()=> {
                 temperatureDescription.textContent = summary;
                 locationTimezone.textContent = data.name;
                 //Formula for Celsius
-                let celsius
+                let celsius = (temperature - 32)*(5/9);
 
                 //Set Icon
                 setIcons(icon, document.querySelector(".icon"));
@@ -46,16 +45,19 @@ window.addEventListener('load', ()=> {
                 temperatureSection.addEventListener('click', () =>{
                     if(temperatureSpan.textContent === "F"){
                         temperatureSpan.textContent = "C";
+                        temperatureDegree.textContent = Math.floor(celsius);
                     } else{
                         temperatureSpan.textContent = "F";
+                        temperatureDegree.textContent = temperature;
                     }
                 });
 
 
             });
-            .catch(err => {
+
+           /* .catch(err => {
                 console.log(err);
-            });    
+            };  */  
 
         });
     } else {
