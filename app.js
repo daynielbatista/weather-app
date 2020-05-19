@@ -32,23 +32,26 @@ window.addEventListener('load', ()=> {
                 const summary = data.weather['0'].description.toUpperCase();
                 const icon = data.weather['0'].icon;
 
+                //Formula for fahrenheit and Celsius               
+                let fahrenheit = temperature * 1.8 - 459.67;
+                let celsius = (fahrenheit - 32)*(5/9);
+
                 //Set DOM Elements from the API
-                temperatureDegree.textContent = temperature;
+                temperatureDegree.textContent = Math.floor(celsius);
                 temperatureDescription.textContent = summary;
                 locationTimezone.textContent = data.name;
-                //Formula for Celsius
-                let celsius = (temperature - 32)*(5/9);
+                
 
                 //Set Icon
                 setIcons(icon, document.querySelector(".icon"));
                 //Change temp tp Celcius/Farenheit
                 temperatureSection.addEventListener('click', () =>{
-                    if(temperatureSpan.textContent === "F"){
-                        temperatureSpan.textContent = "C";
+                    if(temperatureSpan.textContent === "°F"){
+                        temperatureSpan.textContent = "°C";
                         temperatureDegree.textContent = Math.floor(celsius);
                     } else{
-                        temperatureSpan.textContent = "F";
-                        temperatureDegree.textContent = temperature;
+                        temperatureSpan.textContent = "°F";
+                        temperatureDegree.textContent = Math.floor(fahrenheit);
                     }
                 });
 
